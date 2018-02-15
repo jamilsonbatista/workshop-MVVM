@@ -8,15 +8,16 @@ import android.databinding.ObservableField;
 
 public class MainActivityViewModel {
 
-    public final ObservableField<String> name = new ObservableField<>();
-
+    public final ObservableField<String> name;
     private final NameProvider nameProvider;
 
     public MainActivityViewModel(NameProvider nameProvider) {
         this.nameProvider = nameProvider;
+        name = new ObservableField<>();
+        updateName();
     }
 
-    public void updateName(){
+    public void updateName() {
         name.set(nameProvider.getRandomName());
     }
 }
